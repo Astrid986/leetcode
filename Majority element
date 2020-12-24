@@ -1,0 +1,9 @@
+class Solution:
+    # @param num, a list of integers
+    # @return an integer
+    def majorityElement(self, num):
+        dict = {}
+        for n in num:
+            dict[n] = dict.get(n,0) +1
+            if dict[n] > len(num)/2:
+                return n
