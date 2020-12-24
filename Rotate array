@@ -1,0 +1,20 @@
+class Solution:
+    # @param nums, a list of integer
+    # @param k, num of steps
+    # @return nothing, please modify the nums list in-place.
+    def rotate(self, nums, k):
+        
+        def gcd(a,b):
+            if b==0:
+                return a
+            else:
+                return gcd(b, a%b)
+        
+        n = len(nums)
+        for i in range(gcd(n,k)):
+            pre = nums[i]
+            j = i
+            while (j+k)%n != i:
+                nums[(j+k)%n], pre = pre, nums[(j+k)%n]
+                j = (j+k)%n
+            nums[(j+k)%n] = pre
