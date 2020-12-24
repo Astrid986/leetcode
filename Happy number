@@ -1,0 +1,19 @@
+class Solution:
+    # @param {integer} n
+    # @return {boolean}
+    def isHappy(self, n):
+        hist = []
+        res = 0
+        while 1:
+            if n==1:
+                return True
+            while n > 0:
+                res += (n%10) * (n%10)
+                n = n/10
+            if res in hist:
+                return False
+            else:
+                hist.append(res)
+                n = res
+                res = 0
+        
