@@ -1,4 +1,16 @@
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        
-    }
+def twoSum(nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+
+    num_lst = list(range(len(nums)))
+
+    for indx, num in enumerate(num_lst):
+        for num_other in num_lst[indx+1:]:
+            if nums[num] + nums[num_other] == target:
+                return [num, num_other]
+            else: 
+                continue
+    return None
