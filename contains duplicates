@@ -1,0 +1,20 @@
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        if len(nums) == 0:
+            return False
+        mp = {}
+        for i in range(len(nums)):
+            # Note: here you cannot use "if not "
+            # because if mp[nums[i]] == 0, if not will also return True
+            if mp.get(nums[i]) == None:
+                mp[nums[i]] = i
+            elif (i - mp[nums[i]]) <= k:
+                return True
+            else:
+                mp[nums[i]] = i
+        return False
