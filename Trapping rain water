@@ -1,6 +1,16 @@
-class Solution {
-public:
-    int trap(vector<int>& height) {
-        
-    }
-};
+def trap(height, bound=None):
+    storage = 0
+    temp_storage = 0
+    left_bound = None
+    max_left_bound = 0
+
+    for elevation in height:
+        if bound and elevation == bound:
+            storage += temp_storage
+            return storage
+
+        max_left_bound = max(elevation, max_left_bound)
+
+        if not left_bound:
+            left_bound = elevation
+            continue
